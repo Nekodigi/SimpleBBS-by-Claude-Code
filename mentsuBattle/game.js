@@ -343,9 +343,9 @@ function endGame(gameData) {
     const winnerName = gameData.winner === gameData.player1.id ? 
         gameData.player1.name : gameData.player2.name;
     
-    document.getElementById('result-title').textContent = isWinner ? 'Victory!' : 'Defeat...';
+    document.getElementById('result-title').textContent = isWinner ? 'ざまぁｗｗｗ完全勝利！！！' : 'ボロ負けｗｗｗ雑魚乙ｗｗｗ';
     document.getElementById('result-message').textContent = 
-        isWinner ? 'おめでとう！君の煽りは最強だ！' : `${winnerName}の煽りに敗北...`;
+        isWinner ? '相手は泣いて逃げ出したぜｗｗｗ最高に気持ちいいいいい！！！' : `${winnerName}にボコボコにされたなｗｗｗ恥ずかしくないの？ｗｗｗ`;
     
     if (gameListener) {
         gameListener();
@@ -477,4 +477,20 @@ window.addEventListener('DOMContentLoaded', () => {
         document.getElementById('openai-key').value = savedApiKey;
         openaiApiKey = savedApiKey;
     }
+    
+    const taunts = [
+        'まだやってんの？ｗｗｗ',
+        '弱すぎて草',
+        'こんなゲームで本気になっちゃって恥ずかしくない？',
+        'お前の煽り、小学生レベルだなｗｗｗ',
+        'もっと気合い入れろよ雑魚ｗｗｗ',
+        'ママに泣きつけよｗｗｗ',
+        'そんなんで勝てると思ってんの？',
+        '早く負けを認めろよｗｗｗ'
+    ];
+    
+    setInterval(() => {
+        const randomTaunt = taunts[Math.floor(Math.random() * taunts.length)];
+        console.log('%c' + randomTaunt, 'color: #ff0000; font-size: 20px; font-weight: bold; text-shadow: 2px 2px 0 #00ff00;');
+    }, 10000);
 });
