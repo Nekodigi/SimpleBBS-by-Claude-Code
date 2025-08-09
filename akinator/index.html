@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>逆アキネーター</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>逆アキネーター</h1>
+        
+        <div id="roomSelection" class="screen">
+            <h2>ルーム選択</h2>
+            <input type="text" id="roomIdInput" placeholder="ルームIDを入力">
+            <button id="joinRoomBtn">ルームに参加</button>
+            <button id="createRoomBtn">新しいルームを作成</button>
+        </div>
+
+        <div id="roleSelection" class="screen hidden">
+            <h2>役割を選択</h2>
+            <p id="currentRoomId"></p>
+            <button id="answererBtn" class="role-btn">回答者になる</button>
+            <button id="questionerBtn" class="role-btn">質問者になる</button>
+            <button id="backToRoomBtn">ルーム選択に戻る</button>
+        </div>
+
+        <div id="answererView" class="screen hidden">
+            <h2>回答者</h2>
+            <p class="info">あなたは何かになりきって質問に答えてください</p>
+            <div id="currentQuestion" class="question-display">
+                <p>質問を待っています...</p>
+            </div>
+            <div id="answerSection" class="hidden">
+                <h3>回答を選択:</h3>
+                <div class="answer-buttons">
+                    <button class="answer-btn" data-answer="はい">はい</button>
+                    <button class="answer-btn" data-answer="いいえ">いいえ</button>
+                    <button class="answer-btn" data-answer="わからない">わからない</button>
+                    <button class="answer-btn" data-answer="たぶん">たぶん</button>
+                    <button class="answer-btn" data-answer="たぶん違う">たぶん違う</button>
+                </div>
+            </div>
+            <button id="leaveAnswererBtn">役割選択に戻る</button>
+        </div>
+
+        <div id="questionerView" class="screen hidden">
+            <h2>質問者</h2>
+            <p class="info">回答者が何になりきっているか当ててください</p>
+            
+            <div class="question-input-section">
+                <input type="text" id="questionInput" placeholder="質問を入力">
+                <button id="sendQuestionBtn">質問を送信</button>
+            </div>
+
+            <div id="questionHistory">
+                <h3>質問履歴</h3>
+                <div id="historyList"></div>
+            </div>
+
+            <button id="leaveQuestionerBtn">役割選択に戻る</button>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
