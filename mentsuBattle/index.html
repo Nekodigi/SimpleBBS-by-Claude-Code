@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>メンツバトル - 煽り合いバトルゲーム</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <div id="title-screen" class="screen">
+            <h1>メンツバトル</h1>
+            <p class="subtitle">煽り言葉で戦うオンラインバトル</p>
+            <input type="text" id="player-name" placeholder="プレイヤー名を入力" maxlength="20">
+            <button id="start-btn" class="btn-primary">バトル開始</button>
+        </div>
+
+        <div id="matching-screen" class="screen hidden">
+            <h2>対戦相手を探しています...</h2>
+            <div class="loader"></div>
+            <button id="cancel-matching" class="btn-secondary">キャンセル</button>
+        </div>
+
+        <div id="game-screen" class="screen hidden">
+            <div class="game-header">
+                <div class="room-info">
+                    <span id="room-id"></span>
+                </div>
+            </div>
+
+            <div class="battle-field">
+                <div class="player-area player1">
+                    <div class="player-info">
+                        <h3 id="player1-name">プレイヤー1</h3>
+                        <div class="hp-bar">
+                            <div class="hp-fill" id="player1-hp"></div>
+                            <span class="hp-text" id="player1-hp-text">100/100</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="battle-log">
+                    <div id="battle-messages"></div>
+                </div>
+
+                <div class="player-area player2">
+                    <div class="player-info">
+                        <h3 id="player2-name">プレイヤー2</h3>
+                        <div class="hp-bar">
+                            <div class="hp-fill" id="player2-hp"></div>
+                            <span class="hp-text" id="player2-hp-text">100/100</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-area">
+                <div id="turn-indicator" class="turn-indicator">あなたのターン</div>
+                <div class="attack-input">
+                    <input type="text" id="attack-text" placeholder="煽り言葉を入力..." maxlength="100">
+                    <button id="attack-btn" class="btn-attack">攻撃！</button>
+                </div>
+                <div class="attack-power-preview">
+                    <span>予測ダメージ: </span>
+                    <span id="damage-preview">0</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="result-screen" class="screen hidden">
+            <h2 id="result-title">バトル終了！</h2>
+            <div id="result-message"></div>
+            <button id="rematch-btn" class="btn-primary">再戦</button>
+            <button id="return-btn" class="btn-secondary">タイトルに戻る</button>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>
